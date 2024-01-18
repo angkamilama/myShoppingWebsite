@@ -16,6 +16,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
+import NewArrivals from "./NewArrivals";
 import { FaTruck } from "react-icons/fa";
 import { TbReload } from "react-icons/tb";
 
@@ -112,12 +113,10 @@ function Home() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 2750,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
+        pagination={false}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
@@ -152,7 +151,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row mb-9">
         <div className="w-full h-full   p-3">
           <img src={saleImgOne} />
         </div>
@@ -165,24 +164,11 @@ function Home() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="p-2">
         <h1>NEW Arrivals</h1>
-        {/* <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="flex"
-        >
+        <div className="w-full h-[500px] flex justify-evenly items-center ">
           <NewArrivals />
-        </Swiper> */}
+        </div>
       </div>
     </div>
   );
