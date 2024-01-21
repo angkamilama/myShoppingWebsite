@@ -18,7 +18,7 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import NewArrivals from "./NewArrivals";
-import BestSeller from "./Bestseller";
+import BestSeller from "./BestSeller";
 import { FaTruck } from "react-icons/fa";
 import { TbReload } from "react-icons/tb";
 import SpecialOffers from "./SpecialOffers";
