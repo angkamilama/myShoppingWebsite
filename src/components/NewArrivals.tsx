@@ -1,66 +1,44 @@
-import newArrOne from "../assets/newArrival/newArrOne.webp";
-import newArrTwo from "../assets/newArrival/newArrTwo.webp";
-import newArrThree from "../assets/newArrival/newArrThree.webp";
-import newArrFour from "../assets/newArrival/newArrFour.webp";
-import newArrFive from "../assets/newArrival/newArrFive.jpg";
-import newArrSix from "../assets/newArrival/newArrSix.jpg";
 import { TbGitCompare } from "react-icons/tb";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoArrowRedoSharp } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
-import { Pagination } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-function newArrivals() {
-  const newArrivals = [
-    {
-      name: "Round Table Clock",
-      price: "$40.00",
-      color: "Black",
-      img: newArrOne,
-      id: 1,
-    },
-    {
-      name: "Smart Watch",
-      price: "$250.00",
-      color: "Black",
-      img: newArrTwo,
-      id: 2,
-    },
-    {
-      name: "Cloth Basket",
-      price: "$80.00",
-      color: "Mixed",
-      img: newArrThree,
-      id: 3,
-    },
-    {
-      name: "Funny toys for babies",
-      price: "$60.00",
-      color: "Mixed",
-      img: newArrFour,
-      id: 4,
-    },
-    {
-      name: "Jacket for boys",
-      price: "$50.00",
-      color: "Brown",
-      img: newArrFive,
-      id: 5,
-    },
-    {
-      name: "Mountain Jacket",
-      price: "$155.00",
-      color: "Red",
-      img: newArrSix,
-      id: 6,
-    },
-  ];
+// import { Item } from '../types'
 
+// export type Item = {
+//   name: string;
+//   price: number;
+// }
+
+// interface Item {
+//   img: string;
+//   name: string;
+//   color: string;
+//   id: number;
+// }
+
+type Item = {
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  id: number;
+  image: string;
+  rating: object;
+};
+
+function newArrivals({ fetchedData }: { fetchedData: Item[] }) {
+  if (!fetchedData) {
+    return <p>no new arrivals</p>;
+  }
+  const newArrivalsData = fetchedData.slice(14, 19);
   return (
     <Swiper
       slidesPerView={1}
@@ -81,24 +59,21 @@ function newArrivals() {
           spaceBetween: 50,
         },
       }}
-      modules={[Pagination]}
+      modules={[Pagination, Navigation]}
       className="mySwiper"
     >
-      {newArrivals.map((item) => {
+      {newArrivalsData.map((item) => {
+        const { image, title, id, price } = item;
         return (
-          <SwiperSlide>
-            <div
-              key={item.id}
-              className="flex flex-col justify-center items-center  mt-1 bg-gray-100 relative mb-8 p-0"
-            >
+          <SwiperSlide key={id}>
+            <div className="flex flex-col justify-evenly items-center mt-1 bg-white relative mb-8 p-4 h-[300px] text-center">
               <img
-                src={item.img}
-                className="max-h-[250px] w-10/12 mb-4
+                src={image}
+                className="max-h-[200px] w-8/12 mb-4
                 rounded-xl"
               />
-              <p className=" mb-1">{item.name}</p>
-              <p className=" mb-1">{item.price}</p>
-              <p className=" mb-7">{item.color}</p>
+              <p className=" mb-1 text-xs md:text-sm">{title}</p>
+              <p className=" mb-1 text-xs md:text-sm">Price: €{price}</p>
               <div className="w-full h-4/12 flex flex-col justify-between items-end  absolute top-30 right-1 bg-white opacity-0  hover:opacity-100 hover:text-gray-800">
                 <div className="w-full flex justify-end items-center  gap-3 border border-b-[1px] text-gray-500 hover:text-black hover:font-medium">
                   <p>Compare</p>

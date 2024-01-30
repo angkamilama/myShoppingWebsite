@@ -2,13 +2,9 @@ import orebiLogo from "../assets/orebiLogo.jpg";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
-function Header() {
-  const [showNavList, setShowNavList] = useState(false);
-  const [showBrandList, setShowBrandList] = useState(false);
-  const [showCategoryList, setCategoryList] = useState(false);
+const Categories = () => {
   const categoryItems = [
     "new Arrivals",
     "Gadgets",
@@ -16,29 +12,31 @@ function Header() {
     "Electronics",
     "Others",
   ];
+
+  const categoryList = categoryItems.map((item) => {
+    return <li className="hover:tracking-wider hover:underline">{item}</li>;
+  });
+
+  return <ul>{categoryList}</ul>;
+};
+
+const Brands = () => {
   const BrandItems = ["Adidas", "Samsung", "Logitech", "Apple", "Zara"];
-  const handleCategory = () => {
-    const categoryList = categoryItems.map((item) => {
-      return (
-        <div>
-          <p className="hover:tracking-wider hover:underline">{item}</p>
-        </div>
-      );
-    });
+  const BrandList = BrandItems.map((item) => {
+    return (
+      <div>
+        <p className="hover:underline hover:tracking-wider">{item}</p>
+      </div>
+    );
+  });
 
-    return <p>{categoryList}</p>;
-  };
-  const handleBrand = () => {
-    const BrandList = BrandItems.map((item) => {
-      return (
-        <div>
-          <p className="hover:underline hover:tracking-wider">{item}</p>
-        </div>
-      );
-    });
+  return <p>{BrandList}</p>;
+};
 
-    return <p>{BrandList}</p>;
-  };
+function Header() {
+  const [showNavList, setShowNavList] = useState(false);
+  const [showBrandList, setShowBrandList] = useState(false);
+  const [showCategoryList, setCategoryList] = useState(false);
 
   return (
     <>
@@ -106,7 +104,7 @@ function Header() {
                   </span>
                 </div>
                 <div className="flex ">
-                  {showCategoryList ? handleCategory() : ""}
+                  {showCategoryList ? <Categories /> : ""}
                 </div>
               </div>
               <div className="flex flex-col justify-between items-start w-full mb-3">
@@ -119,9 +117,7 @@ function Header() {
                     {showBrandList ? "-" : "+"}
                   </span>
                 </div>
-                <div className="flex ">
-                  {showBrandList ? handleBrand() : ""}
-                </div>
+                <div className="flex ">{showBrandList ? <Brands /> : ""}</div>
               </div>
             </div>
           </div>
