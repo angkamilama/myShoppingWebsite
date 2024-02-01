@@ -1,10 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { mySchema } from "../validationFolder/UserValidation";
-import { useEffect } from "react";
 
 interface UserInput {
-  firstName: "";
+  firstName: string;
   lastName: string;
   email: string;
   phone: number;
@@ -15,70 +14,84 @@ function ContactForm() {
     resolver: yupResolver(mySchema),
   });
 
-  const { errors, isSubmitSuccessful } = formState;
+  const { errors } = formState;
 
   const onSubmit: SubmitHandler<UserInput> = (data) => {
     console.log(data);
+    reset();
   };
 
-  useEffect(() => {
-    if (formState.isSubmitSuccessful) {
-      reset();
-    }
-  }, [isSubmitSuccessful]);
-
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col justify-evenly items-center h-[400px] w-full"
-    >
-      <div>
-        <label>First Name:</label>{" "}
-        <input
-          {...register("firstName")}
-          type="text"
-          className="w-[380px] border-b-[1px] border-gray-600 block outline-none mb-2"
-        />
-        <p>{errors.firstName?.message}</p>
+    <div className="flex flex-col justify-evenly items-center md:flex-row gap-7 ">
+      <div className="p-3 w-full  md:w-6/12 flex flex-col gap-4 ">
+        <h1 className="text-center text-lg font-bold mb-6">
+          Come to our store or ask a question right now
+        </h1>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className=" flex flex-col justify-evenly items-center w-full "
+        >
+          <div className="w-[300px] ">
+            <label>First Name:</label>
+            <input
+              {...register("firstName")}
+              type="text"
+              className="w-full border-b-[1px] border-gray-600 block outline-none mb-2 "
+            />
+            <p>{errors.firstName?.message}</p>
+          </div>
+          <div className="w-[300px]">
+            <label>Last Name:</label>
+            <input
+              {...register("lastName")}
+              type="text"
+              className="w-full border-b-[1px] border-gray-600 block outline-none mb-2"
+            />
+            <p>{errors.lastName?.message}</p>
+          </div>
+          <div className="w-[300px]">
+            <label>E-mail:</label>
+            <input
+              {...register("email")}
+              type="email"
+              className="w-full border-b-[1px] border-gray-600 block outline-none mb-2"
+            />
+            <p>{errors.email?.message}</p>
+          </div>
+          <div className="w-[300px]">
+            <label>Phone:</label>
+            <input
+              {...register("phone")}
+              type="number"
+              className="w-full border-b-[1px] border-gray-600 block outline-none mb-2"
+            />
+            <p>{errors.phone?.message}</p>
+          </div>
+          <div className="w-[300px]">
+            <label>Message:</label>
+            <input
+              {...register("message")}
+              type="text"
+              className="w-full border-b-[1px] border-gray-600 block outline-none mb-4"
+            />
+            <p>{errors.message?.message}</p>
+          </div>
+          <input
+            type="submit"
+            className="px-2 py-1 bg-gray-300 hover:bg-gray-400 hover:cursor-pointer border border-gray-600 mb-4 rounded-2xl"
+          />
+        </form>
       </div>
-      <div>
-        <label>Last Name:</label>
-        <input
-          {...register("lastName")}
-          type="text"
-          className="w-[380px] border-b-[1px] border-gray-600 block outline-none mb-2"
-        />
-        <p>{errors.lastName?.message}</p>
+      <div className=" w-full md:w-6/12">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.393136774468!2d7.013883000000008!3d51.450938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c2ca41f0c789%3A0x9844523fa2292705!2sEssen%20Central%20Station!5e0!3m2!1sen!2sde!4v1706738785254!5m2!1sen!2sde"
+          width="600"
+          height="400"
+          loading="lazy"
+          className="w-full"
+        ></iframe>
       </div>
-      <div>
-        <label>E-mail:</label>
-        <input
-          {...register("email")}
-          type="email"
-          className="w-[380px] border-b-[1px] border-gray-600 block outline-none mb-2"
-        />
-        <p>{errors.email?.message}</p>
-      </div>
-      <div>
-        <label>Phone:</label>
-        <input
-          {...register("phone")}
-          type="number"
-          className="w-[380px] border-b-[1px] border-gray-600 block outline-none mb-2"
-        />
-        <p>{errors.phone?.message}</p>
-      </div>
-      <div>
-        <label>Message:</label>
-        <input
-          {...register("message")}
-          type="text"
-          className="w-[380px] border-b-[1px] border-gray-600 block outline-none mb-2"
-        />
-        <p>{errors.message?.message}</p>
-      </div>
-      <input type="submit" />
-    </form>
+    </div>
   );
 }
 
