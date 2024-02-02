@@ -37,12 +37,9 @@ function Home() {
   const [fetchedData, setFetchedData] = useState<Item[]>([]);
 
   useEffect(() => {
-    function getData() {
-      fetch("https://fakestoreapi.com/products")
-        .then((response) => response.json())
-        .then((data) => setFetchedData(data));
-    }
-    return () => getData();
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => setFetchedData(data));
   }, []);
 
   return (
