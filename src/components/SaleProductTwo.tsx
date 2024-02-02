@@ -10,11 +10,9 @@ type Item = {
 
 function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
   const saleProductTwoArray = fetchedData.slice(4, 9);
-  const products = saleProductTwoArray.map(
-    ({ image, price, description, title, id }) => {
-      return { price, image, title, id };
-    }
-  );
+  const products = saleProductTwoArray.map(({ image, price, title, id }) => {
+    return { price, image, title, id };
+  });
   //   const products = saleProductTwoArray.map((item) => {
   //     const p = item.price;
   //     const image = item.image;

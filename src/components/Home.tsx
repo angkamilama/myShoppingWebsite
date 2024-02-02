@@ -32,24 +32,9 @@ type Item = {
   rating: object;
 };
 
-interface ContactDetail {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: number;
-  message: string;
-}
-
 function Home() {
   const [searchItem, setSearchItem] = useState("");
   const [fetchedData, setFetchedData] = useState<Item[]>([]);
-  const [contactDetail, setContactDetail] = useState<ContactDetail>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: 0,
-    message: "",
-  });
 
   useEffect(() => {
     function getData() {
@@ -59,10 +44,6 @@ function Home() {
     }
     return () => getData();
   }, []);
-
-  const handleSubmit = (e) => {
-    console.log(e.target.value);
-  };
 
   return (
     <div className="box-border m-0 p-0 font-myFont">

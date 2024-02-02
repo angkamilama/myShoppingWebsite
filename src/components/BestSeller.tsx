@@ -1,5 +1,3 @@
-import { bestSellers } from "./Utilities";
-
 // pro tip - types outside of the React component
 // pro tip - types should be capitalised e.g. User, Todo, ItemType
 // pro tip - you dont need to put "type" after a type e.g. User is better than UserType

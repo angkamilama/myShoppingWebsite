@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { mySchema } from "../validationFolder/UserValidation";
+import { useState } from "react";
 
 interface UserInput {
   firstName: string;
@@ -9,7 +10,10 @@ interface UserInput {
   phone: number;
   message: string;
 }
+
 function ContactForm() {
+  const [user, setUser] = useState<UserInput>();
+
   const { register, handleSubmit, formState, reset } = useForm<UserInput>({
     resolver: yupResolver(mySchema),
   });
@@ -17,7 +21,7 @@ function ContactForm() {
   const { errors } = formState;
 
   const onSubmit: SubmitHandler<UserInput> = (data) => {
-    console.log(data);
+    setUser(data);
     reset();
   };
 
