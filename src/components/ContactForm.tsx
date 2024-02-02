@@ -38,7 +38,7 @@ function ContactForm() {
               type="text"
               className="w-full border-b-[1px] border-gray-600 block outline-none mb-2 "
             />
-            <p>{errors.firstName?.message}</p>
+            <p className="text-red-700 mb-2">{errors.firstName?.message}</p>
           </div>
           <div className="w-[300px]">
             <label>Last Name:</label>
@@ -47,7 +47,7 @@ function ContactForm() {
               type="text"
               className="w-full border-b-[1px] border-gray-600 block outline-none mb-2"
             />
-            <p>{errors.lastName?.message}</p>
+            <p className="text-red-700 mb-2">{errors.lastName?.message}</p>
           </div>
           <div className="w-[300px]">
             <label>E-mail:</label>
@@ -56,7 +56,7 @@ function ContactForm() {
               type="email"
               className="w-full border-b-[1px] border-gray-600 block outline-none mb-2"
             />
-            <p>{errors.email?.message}</p>
+            <p className="text-red-700 mb-2">{errors.email?.message}</p>
           </div>
           <div className="w-[300px]">
             <label>Phone:</label>
@@ -65,16 +65,17 @@ function ContactForm() {
               type="number"
               className="w-full border-b-[1px] border-gray-600 block outline-none mb-2"
             />
-            <p>{errors.phone?.message}</p>
+            <p className="text-red-700 mb-2">{errors.phone?.message}</p>
           </div>
           <div className="w-[300px]">
             <label>Message:</label>
-            <input
+            <textarea
               {...register("message")}
-              type="text"
+              rows={4}
+              cols={40}
               className="w-full border-b-[1px] border-gray-600 block outline-none mb-4"
             />
-            <p>{errors.message?.message}</p>
+            <p className="text-red-700 mb-2">{errors.message?.message}</p>
           </div>
           <input
             type="submit"

@@ -17,7 +17,7 @@ function SpecialOffers({ fetchedData }: { fetchedData: Item[] }) {
         return (
           <div
             key={id}
-            className="border-dotted border-2 border-gray-300 flex flex-col justify-evenly items-center  mb-5 rounded-2xl"
+            className="border border-grey-600 flex flex-col justify-evenly items-center md:w-[200px] md:border-none md:flex md:flex-wrap md:justify-evenly mb-5 rounded-2xl"
           >
             <img src={image} className="w-1/2 mx-auto" />
             <div className="p-5">

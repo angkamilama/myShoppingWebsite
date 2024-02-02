@@ -38,7 +38,7 @@ function newArrivals({ fetchedData }: { fetchedData: Item[] }) {
   if (!fetchedData) {
     return <p>no new arrivals</p>;
   }
-  const newArrivalsData = fetchedData.slice(14, 19);
+  const newArrivalsData = fetchedData.slice(12, 20);
   return (
     <Swiper
       slidesPerView={1}

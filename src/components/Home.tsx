@@ -83,7 +83,7 @@ function Home() {
         <FaCaretDown className="mr-2" />
         <RiShoppingCart2Fill className="mx-4" />
       </div>
-      <div className="p-6">
+      <div className="p-6" id="main-body">
         <SaleProductOne fetchedData={fetchedData} />
         <div className=" md:border-b-2 my-3">
           <div className=" flex flex-col justify-center items-center md:flex-row justify-evenly items-center mb-7 md:p-4 md:mb-4 ">
@@ -146,7 +146,7 @@ function Home() {
           <ContactForm />
         </div>
       </div>
-      <div className="bg-slate-200/50">
+      <div className="bg-slate-200/50" id="footer">
         <div className="w-full md:w-1/2 flex justify-between items-center p-6  mb-4 mx-auto">
           <div>
             <h2 className="text-lg font-bold mb-3">Shop</h2>
@@ -183,10 +183,10 @@ function Home() {
             </button>
           </div>
         </div>
-        <div>
+        <div id="payment-method">
           <img
             src={paymentMethod}
-            className="w-6/12 md:w-4/12 h-[80px] mx-auto"
+            className="w-8/12 md:w-4/12 h-[80px] mx-auto"
           />
         </div>
         <div className="flex text-center justify-evenly items-center mt-4 w-8/12 md:w-4/12 p-2 mx-auto">

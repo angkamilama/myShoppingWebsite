@@ -18,7 +18,7 @@ type Item = {
   rating: object;
 };
 function Bestseller({ fetchedData }: { fetchedData: Item[] }) {
-  const bestSellersProducts = fetchedData.slice(0, 4);
+  const bestSellersProducts = fetchedData.slice(0, 6);
   return (
     <div className="flex flex-col  md:flex-row  justify-evenly items-center md:flex-wrap gap-3">
       {bestSellersProducts.map((item) => {

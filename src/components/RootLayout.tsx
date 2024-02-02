@@ -160,35 +160,6 @@ function Header() {
               </NavLink>
             </div>
           </ul>
-          {/* <ul className=" w-full box-border borderborder-red-700 flex justify-evenly items-center font-myFont text-right text-gray-600 hover:text-gray-800 p-2">
-            <NavLink
-              to="/"
-              className="text-center  hover:font-bold hover:tracking-wide hover:underline"
-            >
-              Home
-            </NavLink>
-
-            <NavLink
-              to="/Shop"
-              className="text-center hover:font-bold hover:tracking-wide hover:underline"
-            >
-              Shop
-            </NavLink>
-
-            <NavLink
-              to="/About"
-              className="text-center hover:font-bold hover:tracking-wide hover:underline"
-            >
-              About
-            </NavLink>
-
-            <NavLink
-              to="/Contact"
-              className="text-center  hover:font-bold hover:tracking-wide hover:underline"
-            >
-              Contact
-            </NavLink>
-          </ul> */}
         </div>
       </header>
       <Outlet />
