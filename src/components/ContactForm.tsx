@@ -13,6 +13,7 @@ interface UserInput {
 
 function ContactForm() {
   const [user, setUser] = useState<UserInput>();
+  const [userInfo, setUserInfo] = useState(false);
 
   const { register, handleSubmit, formState, reset } = useForm<UserInput>({
     resolver: yupResolver(mySchema),
@@ -23,6 +24,7 @@ function ContactForm() {
   const onSubmit: SubmitHandler<UserInput> = (data) => {
     setUser(data);
     reset();
+    setUserInfo(true);
   };
 
   return (
@@ -85,6 +87,12 @@ function ContactForm() {
             type="submit"
             className="px-2 py-1 bg-gray-300 hover:bg-gray-400 hover:cursor-pointer border border-gray-600 mb-4 rounded-2xl"
           />
+          {userInfo && (
+            <p>
+              Thank you ${user?.firstName}! we will contact you as soon as
+              possible
+            </p>
+          )}
         </form>
       </div>
       <div className=" w-full md:w-6/12">
