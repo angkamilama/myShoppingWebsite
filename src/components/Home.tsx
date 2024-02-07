@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import { IoPersonSharp } from "react-icons/io5";
-import { RiShoppingCart2Fill } from "react-icons/ri";
-import { FaCaretDown } from "react-icons/fa";
+
 import { register } from "swiper/element/bundle";
 import productOfTheYear from "../assets/productOfTheYear.jpg";
 import NewArrivals from "./NewArrivals";
@@ -33,7 +30,6 @@ type Item = {
 };
 
 function Home() {
-  const [searchItem, setSearchItem] = useState("");
   const [fetchedData, setFetchedData] = useState<Item[]>([]);
 
   useEffect(() => {
@@ -44,23 +40,6 @@ function Home() {
 
   return (
     <div className="box-border m-0 p-0 font-myFont">
-      <div className="w-full h-[100px] flex flex-col justify-evenly items-center bg-slate-200/50  ">
-        <div className="flex justify-evenly items-center bg-white w-10/12 rounded-lg mt-6">
-          <input
-            type="text"
-            value={searchItem}
-            onChange={(e) => setSearchItem(e.target.value)}
-            className="w-11/12 p-3 ml-2 outline-none font-myFont font-thin"
-            placeholder=" Search your products here"
-          />
-          <FaMagnifyingGlass className="mr-4" />
-        </div>
-      </div>
-      <div className="flex justify-start items-start w-full bg-slate-200/50 p-3">
-        <IoPersonSharp className="mx-2 " />
-        <FaCaretDown className="mr-2" />
-        <RiShoppingCart2Fill className="mx-4" />
-      </div>
       <div className="p-6" id="main-body">
         <SaleProductOne fetchedData={fetchedData} />
         <div className=" md:border-b-2 my-3">

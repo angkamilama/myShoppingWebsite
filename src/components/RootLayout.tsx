@@ -3,6 +3,10 @@ import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useState } from "react";
 import { Outlet, NavLink } from "react-router-dom";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { IoPersonSharp } from "react-icons/io5";
+import { RiShoppingCart2Fill } from "react-icons/ri";
+import { FaCaretDown } from "react-icons/fa";
 
 const Categories = () => {
   const categoryItems = [
@@ -20,23 +24,10 @@ const Categories = () => {
   return <ul>{categoryList}</ul>;
 };
 
-const Brands = () => {
-  const BrandItems = ["Adidas", "Samsung", "Logitech", "Apple", "Zara"];
-  const BrandList = BrandItems.map((item) => {
-    return (
-      <div>
-        <p className="hover:underline hover:tracking-wider">{item}</p>
-      </div>
-    );
-  });
-
-  return <p>{BrandList}</p>;
-};
-
 function Header() {
   const [showNavList, setShowNavList] = useState(false);
-  const [showBrandList, setShowBrandList] = useState(false);
   const [showCategoryList, setCategoryList] = useState(false);
+  const [searchItem, setSearchItem] = useState("");
 
   return (
     <>
@@ -72,11 +63,11 @@ function Header() {
                   Home
                 </NavLink>
                 <NavLink
-                  to="/Shop"
+                  to="/Cart"
                   className="hover:font-bold hover:underline hover:tracking-wide mb-3"
                   onClick={() => setShowNavList(!showNavList)}
                 >
-                  Shop
+                  Cart
                 </NavLink>
                 <NavLink
                   to="/About"
@@ -107,18 +98,6 @@ function Header() {
                   {showCategoryList ? <Categories /> : ""}
                 </div>
               </div>
-              <div className="flex flex-col justify-between items-start w-full mb-3">
-                <div className="flex justify-between items-center w-full mb-3">
-                  <h1>Shop by Brand</h1>
-                  <span
-                    onClick={() => setShowBrandList(!showBrandList)}
-                    className="text-2xl"
-                  >
-                    {showBrandList ? "-" : "+"}
-                  </span>
-                </div>
-                <div className="flex ">{showBrandList ? <Brands /> : ""}</div>
-              </div>
             </div>
           </div>
           <div className=" relative text-xl mr-2 mt-2 text-white hover:text-red-500 p-1  border border-2 hover:border-red-500">
@@ -137,10 +116,10 @@ function Header() {
             </div>
             <div className="w-20 text-center inline-block">
               <NavLink
-                to="/Shop"
+                to="/Cart"
                 className="text-center hover:font-bold hover:tracking-wide hover:underline"
               >
-                Shop
+                Cart
               </NavLink>
             </div>
             <div className="w-20 text-center inline-block">
@@ -162,6 +141,25 @@ function Header() {
           </ul>
         </div>
       </header>
+      <div>
+        <div className="w-full h-[100px] flex flex-col justify-evenly items-center bg-slate-200/50  ">
+          <div className="flex justify-evenly items-center bg-white w-10/12 rounded-lg mt-6">
+            <input
+              type="text"
+              value={searchItem}
+              onChange={(e) => setSearchItem(e.target.value)}
+              className="w-11/12 p-3 ml-2 outline-none font-myFont font-thin"
+              placeholder=" Search your products here"
+            />
+            <FaMagnifyingGlass className="mr-4" />
+          </div>
+        </div>
+        <div className="flex justify-start items-start w-full bg-slate-200/50 p-3">
+          <IoPersonSharp className="mx-2 " />
+          <FaCaretDown className="mr-2" />
+          <RiShoppingCart2Fill className="mx-4" />
+        </div>
+      </div>
       <Outlet />
     </>
   );
