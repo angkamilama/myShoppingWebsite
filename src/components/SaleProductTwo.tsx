@@ -1,5 +1,5 @@
 import { addProduct } from "../redux/Slices/ProductsSlice";
-import { useAppDispatch, useAppSelector } from "../redux/store/hook";
+import { useAppDispatch } from "../redux/store/hook";
 
 type Item = {
   title: string;
@@ -19,7 +19,7 @@ function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
     return { price, image, title, id };
   });
 
-  const handleClick = (e): void => {
+  const handleClick = () => {
     const { title, price, image, id, count } = e.currentTarget.dataset;
 
     dispatch(addProduct({ title, price, image, id, count }));
