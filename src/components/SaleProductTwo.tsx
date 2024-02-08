@@ -19,7 +19,7 @@ function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
     return { price, image, title, id };
   });
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     const { title, price, image, id, count } = e.currentTarget.dataset;
 
     dispatch(addProduct({ title, price, image, id, count }));
