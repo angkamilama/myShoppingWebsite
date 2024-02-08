@@ -12,17 +12,20 @@ type Item = {
 
 function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
   const dispatch = useAppDispatch();
-  const count = useAppSelector((state) => state.products);
+
   const saleProductTwoArray = fetchedData.slice(4, 9);
+
   const products = saleProductTwoArray.map(({ image, price, title, id }) => {
     return { price, image, title, id };
   });
-  const handleClick = (e): void => {
-    const { title, price, image, id } = e.currentTarget.dataset;
 
-    dispatch(addProduct({ title, price, image, id }));
+  const handleClick = (e): void => {
+    const { title, price, image, id, count } = e.currentTarget.dataset;
+
+    dispatch(addProduct({ title, price, image, id, count }));
   };
-  console.log(count);
+
+  console.log(products);
 
   return (
     <ul className="flex flex-col justify-evenly items-center mx-auto md:flex-row md:w-full gap-4">
@@ -41,6 +44,7 @@ function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
               data-title={title}
               data-price={price}
               data-id={id}
+              data-count={1}
               onClick={handleClick}
             >
               Add to Cart
