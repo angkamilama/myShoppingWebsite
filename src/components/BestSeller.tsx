@@ -1,22 +1,13 @@
-// pro tip - types outside of the React component
-// pro tip - types should be capitalised e.g. User, Todo, ItemType
-// pro tip - you dont need to put "type" after a type e.g. User is better than UserType
-// interface Item {
-//   img: string;
-//   name: string;
-//   color: string;
-// }
-type Item = {
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  id: number;
-  image: string;
-  rating: object;
-};
+import { Product, Item } from "../types/Types";
+import { useAppDispatch } from "../redux/store/hook";
+import { addProduct } from "../redux/Slices/ProductsSlice";
+
 function Bestseller({ fetchedData }: { fetchedData: Item[] }) {
+  const dispatch = useAppDispatch();
   const bestSellersProducts = fetchedData.slice(0, 6);
+  const handleClick = (value: Product) => {
+    dispatch(addProduct(value));
+  };
   return (
     <div className="flex flex-col  md:flex-row  justify-evenly items-center md:flex-wrap gap-3">
       {bestSellersProducts.map((item) => {
@@ -29,6 +20,12 @@ function Bestseller({ fetchedData }: { fetchedData: Item[] }) {
             <img src={image} className="w-[200px] h-[200px]" />
             <p>{title}</p>
             <p>€{price}</p>
+            <button
+              className="border border-gray-400 p-1 rounded-lg text-xs hover:bg-gray-200 hover:border-gray-800 outline-none"
+              onClick={() => handleClick({ title, image, price, id, count: 1 })}
+            >
+              Add to Cart
+            </button>
           </div>
         );
       })}

@@ -1,11 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-type Product = {
-  title: string;
-  price: string;
-  image: string;
-  id: string;
-  count: number;
-};
+import { Product } from "../../types/Types";
 
 export interface ProductState {
   products: Product[];
@@ -24,11 +18,11 @@ export const ProductsSlice = createSlice({
         (product) => product.id === action.payload.id
       );
       if (!isDuplicate) {
-        state.products.push(action.payload);
+        state.products = [...state.products, action.payload];
       }
     },
 
-    increment: (state, action: PayloadAction<string>) => {
+    increment: (state, action: PayloadAction<number>) => {
       const product = state.products.find(
         (product) => product.id === action.payload
       );
@@ -36,7 +30,7 @@ export const ProductsSlice = createSlice({
         product.count++;
       }
     },
-    decrement: (state, action: PayloadAction<string>) => {
+    decrement: (state, action: PayloadAction<number>) => {
       const product = state.products.find(
         (product) => product.id === action.payload
       );
@@ -44,15 +38,10 @@ export const ProductsSlice = createSlice({
         product.count--;
       }
     },
-    deleteProduct: (state, action: PayloadAction<string>) => {
-      const product = state.products.find(
-        (product) => product.id === action.payload
+    deleteProduct: (state, action: PayloadAction<number>) => {
+      state.products = state.products.filter(
+        (product) => product.id !== action.payload
       );
-      if (product) {
-        const index = state.products.indexOf(product);
-        console.log(index);
-        state.products.splice(index, 1);
-      }
     },
   },
 });

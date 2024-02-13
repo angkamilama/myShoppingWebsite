@@ -7,7 +7,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoPersonSharp } from "react-icons/io5";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { FaCaretDown } from "react-icons/fa";
-
+import Footer from "./Footer";
 const Categories = () => {
   const categoryItems = [
     "new Arrivals",
@@ -18,7 +18,14 @@ const Categories = () => {
   ];
 
   const categoryList = categoryItems.map((item) => {
-    return <li className="hover:tracking-wider hover:underline">{item}</li>;
+    return (
+      <li
+        key={categoryItems.indexOf(item)}
+        className="hover:tracking-wider hover:underline"
+      >
+        {item}
+      </li>
+    );
   });
 
   return <ul>{categoryList}</ul>;
@@ -32,7 +39,7 @@ function Header() {
   return (
     <>
       <header className="  flex flex-col justify-between items-center sm:flex-row p-2">
-        <div className="flex w-full justify-between items-center mt-1.5">
+        <div className="flex w-full justify-between items-center mt-1.5 ">
           <div>
             <img src={orebiLogo} alt="logo" />
           </div>
@@ -104,7 +111,7 @@ function Header() {
             <ImCross onClick={() => setShowNavList(false)} />
           </div>
         </nav>
-        <div className="hidden sm:inline-block w-full md:w-[1000px]">
+        <div className="hidden sm:inline-block w-full   md:w-[1000px]">
           <ul className=" font-myFont text-right text-gray-600 hover:text-gray-800 p-2">
             <div className="w-20 text-center inline-block">
               <NavLink
@@ -161,6 +168,7 @@ function Header() {
         </div>
       </div>
       <Outlet />
+      <Footer />
     </>
   );
 }

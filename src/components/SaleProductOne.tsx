@@ -8,18 +8,7 @@ import bannerOne from "../assets/banner/bannerImgOne.webp";
 import bannerTwo from "../assets/banner/bannerImgTwo.webp";
 import bannerThree from "../assets/banner/bannerImgThree.webp";
 
-type Item = {
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  id: number;
-  image: string;
-  rating: object;
-};
-
-function SaleProducts({ fetchedData }: { fetchedData: Item[] }) {
-  console.log(fetchedData);
+function SaleProducts() {
   return (
     <Swiper
       spaceBetween={30}

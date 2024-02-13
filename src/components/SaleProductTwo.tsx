@@ -1,14 +1,6 @@
 import { addProduct } from "../redux/Slices/ProductsSlice";
 import { useAppDispatch } from "../redux/store/hook";
-
-type Item = {
-  title: string;
-  price: number;
-  category: string;
-  id: number;
-  image: string;
-  rating: object;
-};
+import { Item, Product } from "../types/Types";
 
 function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
   const dispatch = useAppDispatch();
@@ -19,13 +11,9 @@ function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
     return { price, image, title, id };
   });
 
-  const handleClick = (e) => {
-    const { title, price, image, id, count } = e.currentTarget.dataset;
-
-    dispatch(addProduct({ title, price, image, id, count }));
+  const handleClick = (value: Product) => {
+    dispatch(addProduct(value));
   };
-
-  console.log(products);
 
   return (
     <ul className="flex flex-col justify-evenly items-center mx-auto md:flex-row md:w-full gap-4">
@@ -39,13 +27,8 @@ function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
             <p className="text-xs md:text-sm">Price: €{price}</p>
             <p className="text-xs md:text-xs">{title}</p>
             <button
-              className="border border-gray-400 p-1 rounded-lg text-xs"
-              data-image={image}
-              data-title={title}
-              data-price={price}
-              data-id={id}
-              data-count={1}
-              onClick={handleClick}
+              className="border border-gray-400 p-1 rounded-lg text-xs hover:bg-gray-200 hover:border-gray-800 outline-none"
+              onClick={() => handleClick({ title, image, price, id, count: 1 })}
             >
               Add to Cart
             </button>
