@@ -7,8 +7,10 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { addProduct } from "../redux/Slices/ProductsSlice";
+import { useState } from "react";
 
 function newArrivals({ fetchedData }: { fetchedData: Item[] }) {
+  const [productIsAdded, setProductIsAdded] = useState<number[]>([]);
   const dispatch = useAppDispatch();
   if (!fetchedData) {
     return <p>no new arrivals</p>;
@@ -16,6 +18,7 @@ function newArrivals({ fetchedData }: { fetchedData: Item[] }) {
   const newArrivalsProduct = fetchedData.slice(12, 19);
   const handleClick = (value: Product) => {
     dispatch(addProduct(value));
+    setProductIsAdded([...productIsAdded, value.id]);
   };
 
   return (
@@ -54,12 +57,23 @@ function newArrivals({ fetchedData }: { fetchedData: Item[] }) {
               <p className=" mb-1 text-xs md:text-sm">{title}</p>
               <p className=" mb-1 text-xs md:text-sm">Price: €{price}</p>
               <button
-                className="border border-gray-400 p-1 rounded-lg text-xs hover:bg-gray-200 hover:border-gray-800 outline-none"
                 onClick={() =>
                   handleClick({ title, image, price, id, count: 1 })
                 }
               >
-                Add to Cart
+                {productIsAdded.includes(id) ? (
+                  <div className="flex items-center justify-between gap-2 p-1">
+                    <p className="border border-gray-400 p-1 rounded-lg text-xs text-slate-200 bg-lime-700  outline-none">
+                      Added
+                    </p>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-between gap-2 p-1">
+                    <p className="border border-gray-400 p-1 rounded-lg text-xs hover:bg-gray-300 hover:border-gray-800 outline-none">
+                      Add to Cart
+                    </p>
+                  </div>
+                )}
               </button>
             </div>
           </SwiperSlide>
