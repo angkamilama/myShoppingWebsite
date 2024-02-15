@@ -2,12 +2,14 @@ import orebiLogo from "../assets/orebiLogo.jpg";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useState } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoPersonSharp } from "react-icons/io5";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { FaCaretDown } from "react-icons/fa";
 import Footer from "./Footer";
+import { useAppSelector } from "../redux/store/hook";
+
 const Categories = () => {
   const categoryItems = [
     "new Arrivals",
@@ -35,6 +37,13 @@ function Header() {
   const [showNavList, setShowNavList] = useState(false);
   const [showCategoryList, setCategoryList] = useState(false);
   const [searchItem, setSearchItem] = useState("");
+  const navigate = useNavigate();
+  const addedProducts = useAppSelector((state) => state.products);
+  const productsArray = addedProducts.products;
+  const totalCount = productsArray.reduce(
+    (acc, product) => (acc += product.count),
+    0
+  );
 
   return (
     <>
@@ -164,7 +173,16 @@ function Header() {
         <div className="flex justify-start items-start w-full bg-slate-200/50 p-3">
           <IoPersonSharp className="mx-2 " />
           <FaCaretDown className="mr-2" />
-          <RiShoppingCart2Fill className="mx-4" />
+          <div className="relative" onClick={() => navigate("/Cart")}>
+            <RiShoppingCart2Fill className="mx-4" />
+            <p
+              className={`absolute bottom-2 left-8 ${
+                totalCount > 0 ? "bg-gray-800/90" : "bg-transparent"
+              }  text-slate-200 rounded-lg w-[25px] h-[25px] text-center`}
+            >
+              {totalCount || false}
+            </p>
+          </div>
         </div>
       </div>
       <Outlet />

@@ -11,15 +11,16 @@ function ShoppingCart() {
   const navigate = useNavigate();
   const addedProducts = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
-  let grossCost = 0;
-  console.log(addedProducts.products);
+  let grossCost: number = 0;
 
   const productCost = () => {
     const productsArray = addedProducts.products;
-    grossCost = productsArray.reduce(
+
+    const costOfProduct = productsArray.reduce(
       (acc, item) => acc + item.count * item.price,
       0
     );
+    grossCost = parseFloat(costOfProduct.toFixed(2));
     return grossCost;
   };
 
@@ -110,7 +111,7 @@ function ShoppingCart() {
       <div className="flex flex-col border border-gray-300 w-3/4 mx-left">
         <div className="flex justify-between items-center p-2">
           <p>Cost</p>
-          <p className="font-bold">{productCost()}</p>
+          <p className="font-bold">{Math.round(productCost())}</p>
         </div>
         <div className="flex justify-between items-center p-2">
           <p>Shipping Charge</p>
@@ -121,8 +122,14 @@ function ShoppingCart() {
           <p className="font-bold">{productCost() + 4.99}</p>
         </div>
       </div>
-      <div>
-        <p className="bg-gray-950/75 text-slate-100 w-full h-[50px] p-3 mb-6 hover:bg-gray-800">
+      <div className="flex justify-between items-center gap-4 w-3/4">
+        <p
+          className="bg-gray-950/75 text-slate-100 w-2/6 h-[50px]  text-sm text-center p-1 mb-6 hover:bg-gray-800"
+          onClick={() => navigate("/")}
+        >
+          Continue Shopping
+        </p>
+        <p className="bg-gray-950/75 text-slate-100 w-2/6  h-[50px] text-sm text-center p-1 mb-6 hover:bg-gray-800">
           Proceed to Checkout
         </p>
       </div>
