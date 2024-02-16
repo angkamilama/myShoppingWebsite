@@ -1,12 +1,12 @@
 import { addProduct } from "../redux/Slices/ProductsSlice";
-import { useAppDispatch } from "../redux/store/hook";
+import { useAppDispatch, useAppSelector } from "../redux/store/hook";
 import { Item, Product } from "../types/Types";
-import { useState } from "react";
+import { AiOutlineCheck } from "react-icons/ai";
 
 function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
-  const [productIsAdded, setProductIsAdded] = useState<number[]>([]);
+  const addedProducts = useAppSelector((state) => state.products);
+  const myProducts = addedProducts.products;
   const dispatch = useAppDispatch();
-
   const saleProductTwoArray = fetchedData.slice(4, 9);
 
   const products = saleProductTwoArray.map(({ image, price, title, id }) => {
@@ -15,7 +15,6 @@ function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
 
   const handleClick = (value: Product) => {
     dispatch(addProduct(value));
-    setProductIsAdded([...productIsAdded, value.id]);
   };
 
   return (
@@ -32,8 +31,11 @@ function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
             <button
               onClick={() => handleClick({ title, image, price, id, count: 1 })}
             >
-              {productIsAdded.includes(id) ? (
+              {myProducts.some((product) => product.id === id) ? (
                 <div className="flex items-center justify-between gap-2 p-1">
+                  <span>
+                    <AiOutlineCheck />
+                  </span>
                   <p className="border border-gray-400 p-1 rounded-lg text-xs text-slate-200 bg-lime-700  outline-none">
                     Added
                   </p>
