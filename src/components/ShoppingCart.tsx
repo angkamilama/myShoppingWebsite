@@ -71,7 +71,7 @@ function ShoppingCart() {
           return (
             <div key={id} className="flex justify-around items-center mb-5 ">
               <div
-                className=" border border-2 border-gray-100  hover:text-red-700 font-bold text-xl text-center px-1 w-1/12 md:w-1/24"
+                className=" borde border-gray-100  hover:text-red-700 font-bold text-xl text-center px-1 w-1/12 md:w-1/24"
                 onClick={() => removeProduct(id)}
               >
                 X

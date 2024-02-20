@@ -15,3 +15,9 @@ export interface Product {
   image: string;
   count: number;
 }
+
+export interface UserDetail {
+  userName: string;
+  email: string;
+  Message: string;
+}

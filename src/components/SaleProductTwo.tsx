@@ -18,16 +18,17 @@ function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
   };
 
   return (
-    <ul className="flex flex-col justify-evenly items-center mx-auto md:flex-row md:w-full gap-4">
-      {products.map(({ image, title, price, id }) => {
+    <div className="flex flex-col  md:flex-row  justify-evenly items-center md:flex-wrap gap-3">
+      {products.map((item) => {
+        const { title, price, image, id } = item;
         return (
-          <li
+          <div
             key={id}
-            className=" border border-gray-200 p-2 flex flex-col justify-evenly items-center h-[200px] w-full mb-3 rounded-2xl md:max-w-[300px]"
+            className=" border border-grey-600 flex flex-col  md:basis-1/4 justify-evenly items-center gap-4 my- p-2 w-full"
           >
-            <img src={image} className="h-1/2 w-2/6 mx-auto" />
-            <p className="text-xs md:text-sm">Price: €{price}</p>
-            <p className="text-xs md:text-xs">{title}</p>
+            <img src={image} className="w-[200px] h-[150px]" />
+            <p>{title}</p>
+            <p>€{price}</p>
             <button
               onClick={() => handleClick({ title, image, price, id, count: 1 })}
             >
@@ -48,10 +49,10 @@ function SaleProductTwo({ fetchedData }: { fetchedData: Item[] }) {
                 </div>
               )}
             </button>
-          </li>
+          </div>
         );
       })}
-    </ul>
+    </div>
   );
 }
 

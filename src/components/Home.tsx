@@ -47,17 +47,23 @@ function Home() {
           </div>
         </div>
         <div className="flex flex-col mb-6 text-center">
-          <h2 className="text-2xl mb-5">Sales</h2>
+          <h2 className="text-2xl mb-3 bg-slate-200 p-2 border border-gray-200 font-bold w-fit mx-auto">
+            Sales
+          </h2>
           <SaleProductTwo fetchedData={fetchedData} />
         </div>
         <div className="text-center">
-          <h1 className="mb-3 text-2xl">New Arrivals</h1>
+          <h1 className="text-2xl mb-3 bg-slate-200 p-2 border border-gray-200 font-bold w-fit mx-auto">
+            New Arrivals
+          </h1>
           <div className="w-full flex justify-evenly items-center mb-6">
             <NewArrivals fetchedData={fetchedData} />
           </div>
         </div>
         <div className="mb-6 text-center">
-          <h1 className="mb-6 text-2xl">Our BestSellers</h1>
+          <h1 className="text-2xl mb-3 bg-slate-200 p-2 border border-gray-200 font-bold w-fit mx-auto">
+            Our BestSellers
+          </h1>
           <BestSeller fetchedData={fetchedData} />
         </div>
         <div className="flex justify-evenly items-center w-full h-80  bg-slate-400/25 mb-9 ">
@@ -77,7 +83,9 @@ function Home() {
           </div>
         </div>
         <div className="text-center mb-4">
-          <h1 className="text-2xl mb-3">Special Offers</h1>
+          <h1 className="text-2xl mb-3 bg-slate-200 p-2 border border-gray-200 font-bold w-fit mx-auto">
+            Special Offers
+          </h1>
           <SpecialOffers fetchedData={fetchedData} />
         </div>
         <div>
