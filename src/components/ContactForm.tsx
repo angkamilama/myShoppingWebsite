@@ -29,7 +29,7 @@ function ContactForm() {
 
   return (
     <div className="border border-gray-300 flex flex-col justify-evenly items-center md:flex-row w-full md:w-6/12 ">
-      <div className="p-3 w-full  md:w-6/12 flex flex-col gap-4 ">
+      <div className="p-3 w-full  md:w-full flex flex-col gap-4 ">
         <h1 className="text-center text-lg font-bold mb-6">
           Come to our store or ask a question right now
         </h1>

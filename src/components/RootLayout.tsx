@@ -50,7 +50,7 @@ function Header() {
       <header className="  flex flex-col justify-between items-center sm:flex-row p-2">
         <div className="flex w-full justify-between items-center mt-1.5 ">
           <div>
-            <img src={orebiLogo} alt="logo" />
+            <img src={orebiLogo} alt="logo" onClick={() => navigate("/")} />
           </div>
           <span className="text-2xl sm:hidden">
             <FaBars onClick={() => setShowNavList(!showNavList)} />

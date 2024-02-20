@@ -96,7 +96,7 @@ function Home() {
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.393136774468!2d7.013883000000008!3d51.450938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c2ca41f0c789%3A0x9844523fa2292705!2sEssen%20Central%20Station!5e0!3m2!1sen!2sde!4v1706738785254!5m2!1sen!2sde"
                 width="600"
-                height="570"
+                height="500"
                 loading="lazy"
                 className="w-full"
               ></iframe>
