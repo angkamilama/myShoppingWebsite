@@ -23,7 +23,10 @@ function SpecialOffers({ fetchedData }: { fetchedData: Item[] }) {
             key={id}
             className="border border-grey-600 flex flex-col justify-evenly items-center md:w-[200px] md:border-none md:flex md:flex-wrap md:justify-evenly mb-5  p-3"
           >
-            <img src={image} className="w-1/2 mx-auto" />
+            <img
+              src={image}
+              className="w-[150px] h-[125px] mx-auto hover:scale-105 p-1"
+            />
             <div className="p-5">
               <p>€{price}</p>
               <p>{title}</p>
@@ -42,7 +45,7 @@ function SpecialOffers({ fetchedData }: { fetchedData: Item[] }) {
                 </div>
               ) : (
                 <div className="flex items-center justify-between gap-2 p-1">
-                  <p className="border border-gray-400 p-1 rounded-lg text-xs hover:bg-gray-300 hover:border-gray-800 outline-none">
+                  <p className="border border-gray-400 p-1 rounded-lg text-xs hover:bg-gray-500 hover:text-slate-200 outline-none">
                     Add to Cart
                   </p>
                 </div>

@@ -52,7 +52,7 @@ function newArrivals({ fetchedData }: { fetchedData: Item[] }) {
               <img
                 src={image}
                 className="max-h-[200px] w-8/12 mb-4
-                rounded-xl"
+                rounded-xl hover:scale-105 p-1"
               />
               <p className=" mb-1 text-xs md:text-sm">{title}</p>
               <p className=" mb-1 text-xs md:text-sm">Price: €{price}</p>
@@ -72,7 +72,7 @@ function newArrivals({ fetchedData }: { fetchedData: Item[] }) {
                   </div>
                 ) : (
                   <div className="flex items-center justify-between gap-2 p-1">
-                    <p className="border border-gray-400 p-1 rounded-lg text-xs hover:bg-gray-300 hover:border-gray-800 outline-none">
+                    <p className="border border-gray-400 p-1 rounded-lg text-xs hover:bg-gray-500 hover:text-slate-200 outline-none">
                       Add to Cart
                     </p>
                   </div>

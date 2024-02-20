@@ -19,9 +19,9 @@ function Bestseller({ fetchedData }: { fetchedData: Item[] }) {
         return (
           <div
             key={id}
-            className=" border border-grey-600 flex flex-col  md:basis-1/4 justify-evenly items-center gap-4 my- p-2 w-full"
+            className=" border border-grey-600 flex flex-col  md:basis-1/4 justify-evenly items-center gap-4 my- p-3 w-full"
           >
-            <img src={image} className="w-[200px] h-[200px]" />
+            <img src={image} className="w-[150px] h-[125px] hover:scale-105" />
             <p>{title}</p>
             <p>€{price}</p>
             <button
@@ -38,7 +38,7 @@ function Bestseller({ fetchedData }: { fetchedData: Item[] }) {
                 </div>
               ) : (
                 <div className="flex items-center justify-between gap-2 p-1">
-                  <p className="border border-gray-400 p-1 rounded-lg text-xs hover:bg-gray-300 hover:border-gray-800 outline-none">
+                  <p className="border border-gray-400 p-1 rounded-lg text-xs hover:bg-gray-500 hover:text-slate-200 outline-none">
                     Add to Cart
                   </p>
                 </div>

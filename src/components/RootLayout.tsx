@@ -59,7 +59,7 @@ function Header() {
         <nav
           className={`${
             showNavList ? "inline-block animate-navToggleRight " : " hidden "
-          }  w-full absolute left-0 top-0 h-full z-10 bg-gray-800/80 flex justify-start items-start opacity-90 sm:hidden`}
+          }  w-full absolute left-0 top-0 h-lvh z-10 bg-gray-800/80 flex justify-start items-start opacity-90 sm:hidden`}
         >
           <div
             className=" w-10/12 p-3 h-full text-white bg-gray-800 "
@@ -116,7 +116,7 @@ function Header() {
               </div>
             </div>
           </div>
-          <div className=" relative text-xl mr-2 mt-2 text-white hover:text-red-500 p-1  border border-2 hover:border-red-500">
+          <div className=" relative text-xl mr-2 mt-2 text-white hover:text-red-500 p-1  border-2 hover:border-red-500">
             <ImCross onClick={() => setShowNavList(false)} />
           </div>
         </nav>

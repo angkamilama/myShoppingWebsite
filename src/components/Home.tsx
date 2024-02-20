@@ -27,7 +27,7 @@ function Home() {
       <div className="p-6" id="main-body">
         <SaleProductOne />
         <div className=" md:border-b-2 my-3">
-          <div className=" flex flex-col justify-center items-center md:flex-row justify-evenly items-center mb-7 md:p-4 md:mb-4 ">
+          <div className=" flex flex-col justify-center  md:flex-row md:justify-evenly items-center mb-7 md:p-4 md:mb-4 ">
             <div className="w-3/4  p-1 flex gap-3 border-b-[2px] hover:shadow-md duration-300 items-center md:w-1/4">
               <span className="font-bold">2</span>
               <p>Two year warranty</p>
@@ -46,14 +46,12 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col mb-6 text-center">
-          <h2 className="text-2xl mb-3 bg-slate-200 p-2 border border-gray-200 font-bold w-fit mx-auto">
-            Sales
-          </h2>
+        <div className="flex flex-col mb-8 text-center">
+          <h2 className="text-2xl mb-3  p-2 font-bold w-fit mx-auto">Sales</h2>
           <SaleProductTwo fetchedData={fetchedData} />
         </div>
         <div className="text-center">
-          <h1 className="text-2xl mb-3 bg-slate-200 p-2 border border-gray-200 font-bold w-fit mx-auto">
+          <h1 className="text-2xl mb-3  p-2 font-bold w-fit mx-auto">
             New Arrivals
           </h1>
           <div className="w-full flex justify-evenly items-center mb-6">
@@ -61,7 +59,7 @@ function Home() {
           </div>
         </div>
         <div className="mb-6 text-center">
-          <h1 className="text-2xl mb-3 bg-slate-200 p-2 border border-gray-200 font-bold w-fit mx-auto">
+          <h1 className="text-2xl mb-3  p-2 font-bold w-fit mx-auto">
             Our BestSellers
           </h1>
           <BestSeller fetchedData={fetchedData} />
@@ -83,16 +81,27 @@ function Home() {
           </div>
         </div>
         <div className="text-center mb-4">
-          <h1 className="text-2xl mb-3 bg-slate-200 p-2 border border-gray-200 font-bold w-fit mx-auto">
+          <h1 className="text-2xl mb-3  p-2 font-bold w-fit mx-auto">
             Special Offers
           </h1>
           <SpecialOffers fetchedData={fetchedData} />
         </div>
         <div>
-          <h1 className="text-xl text-center font-bold">
+          <h1 className="text-xl text-center font-bold mb-3">
             More About Orebi Shop
           </h1>
-          <ContactForm />
+          <div className=" flex flex-col items-center justify-evenly md:flex-row md:justify-evenly md:items-center">
+            <ContactForm />
+            <div className=" w-full md:w-5/12">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.393136774468!2d7.013883000000008!3d51.450938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c2ca41f0c789%3A0x9844523fa2292705!2sEssen%20Central%20Station!5e0!3m2!1sen!2sde!4v1706738785254!5m2!1sen!2sde"
+                width="600"
+                height="570"
+                loading="lazy"
+                className="w-full"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
